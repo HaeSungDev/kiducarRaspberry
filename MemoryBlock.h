@@ -4,7 +4,7 @@
 #include "CommonDefine.h"
 
 // 메모리 블럭을 생성하는 클래스
-// 블럭은 각각 인트형 배열로 구성되며 MemoryBlock 클래스는 이러한 블록들의 논리 메모리를 구성해준다.
+// 블럭은 각각 int형 배열로 구성되며 MemoryBlock 클래스는 이러한 블록들의 논리 메모리를 구성해준다.
 
 class MemoryBlock
 {
