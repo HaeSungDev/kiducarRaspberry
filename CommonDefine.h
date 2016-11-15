@@ -17,6 +17,10 @@ const int LEFT_TIRE_DIR = 1;
 const int RIGHT_TIRE_PWM = 2;
 const int RIGHT_TIRE_DIR = 3;
 
+// 초음파 센서 pin 번호 정의
+const int ECHO_PIN = 28;
+const int TRIG_PIN = 29;
+
 // 블록 타입 정의
 const int MOVEBLOCK = 0;
 const int ROTATEBLOCK = 1;

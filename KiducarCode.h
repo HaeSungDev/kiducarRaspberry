@@ -39,6 +39,17 @@ public:
 	// 반복해서 블럭을 실행하는 코드, 반복 횟수와 반복할 코드 개수를 매개변수로 받음
 	bool repeatCode(int repeatNum, int repeatCodeNum);
 
+	// 초음파 센서를 이용하여 장애물과의 거리를 측정(cm 단위)
+	int getDistance();
+	// 조건을 체크해주는 함수
+	bool conditionCheck(int* blockCode);
+	// code를 건너뛰어주는 함수
+	bool interpretAndIgnore(int* blockCode);
+	// codeNum만큼 건너뛰어주는 함수
+	bool skipCode(int codeNum);
+	// 조건 블럭을 확인하여 분기하는 블록.
+	bool conditionCode(int okCodeNum, int noCodeNum);
+
 	// 코드를 실행
 	void run();
 };
