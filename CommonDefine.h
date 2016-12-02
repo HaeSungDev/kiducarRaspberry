@@ -24,8 +24,34 @@ const int TRIG_PIN = 29;
 // 블록 타입 정의
 const int MOVEBLOCK = 0;
 const int ROTATEBLOCK = 1;
-const int REPEATBLOCK = 2;
-const int CONDITIONBLOCK = 3;
-const int DISTANCECHECKBLOCK = 4;
+const int STOPBLOCK = 2;
+const int REPEATBLOCK = 3;
+const int CONDITIONBLOCK = 4;
+const int DISTANCECHECKBLOCK = 5;
+
+// 실행 코드 정의
+const int STARTCODE = 100;
+const int ENDCODE = 101;
+// 중지 코드 정의
+const int STOPCODE = 102;
+
+
+// wiringPI 초기화 전역 함수
+static bool initWiringPi()
+{
+	static bool isSetup = false;
+
+	if(!isSetup)
+	{
+		if(wiringPiSetup() == -1)
+		{
+			std::cerr << "wiringPiSetup() failed";
+			return false;
+		}
+		isSetup = true;
+	}
+
+	return true;
+}
 
 #endif

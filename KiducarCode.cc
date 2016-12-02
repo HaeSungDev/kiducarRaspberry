@@ -7,12 +7,8 @@ KiducarCode::KiducarCode(MemoryBlock* memBlockCode)
 
 bool KiducarCode::initKiducar()
 {
-	// wiringPi 설정
-	if(wiringPiSetup() == -1)
-	{
-		std::cerr << "wiringPiSetup() failed";
+	if(!initWiringPi())
 		return false;
-	}
 
 	// 왼쪽 바퀴와 오른쪽 바퀴를 OUTPUT 모드로 설정
 	pinMode(LEFT_TIRE_PWM, OUTPUT);
@@ -52,6 +48,12 @@ bool KiducarCode::interpretAndExecute(int* blockCode)
 					rotateLeftCode();
 			}
 			break;
+
+		case STOPBLOCK:
+			{
+				stopCode();
+			}
+			break;	
 
 		case REPEATBLOCK:
 			{	
@@ -147,6 +149,18 @@ void KiducarCode::rotateLeftCode()
 	
 	digitalWrite(RIGHT_TIRE_PWM, 0);
 	digitalWrite(RIGHT_TIRE_DIR, 0);
+}
+
+void KiducarCode::stopCode()
+{
+	digitalWrite(LEFT_TIRE_PWM, 0);
+	digitalWrite(LEFT_TIRE_DIR, 0);
+	
+	digitalWrite(RIGHT_TIRE_PWM, 0);
+	digitalWrite(RIGHT_TIRE_DIR, 0);
+
+	// 0.1초간 정지
+	delay(100);
 }
 
 bool KiducarCode::repeatCode(int repeatNum, int repeatCodeNum)

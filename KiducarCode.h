@@ -36,6 +36,9 @@ public:
 	// 차를 왼쪽으로 조금 회전시키는 코드
 	void rotateLeftCode();
 
+	// 차를 정지시킴
+	void stopCode();
+
 	// 반복해서 블럭을 실행하는 코드, 반복 횟수와 반복할 코드 개수를 매개변수로 받음
 	bool repeatCode(int repeatNum, int repeatCodeNum);
 
