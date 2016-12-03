@@ -93,8 +93,23 @@ bool MemoryBlock::insertBlock(int* block, int size)
 	return true;
 }
 
+void MemoryBlock::deleteAllBlock()
+{
+	for(int i = 0;i < m_memEndPoint;i++)
+	{
+		if(m_memBlock)
+			delete[] m_memBlock[i];
+	}
+
+	m_memEndPoint = 0;
+	m_memExecutePoint = 0;
+}
+
 int* MemoryBlock::curExecuteBlock()
 {
+	if(m_memEndPoint == 0)
+		return nullptr;
+
 	return m_memBlock[m_memExecutePoint];
 }
 

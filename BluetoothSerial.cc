@@ -13,8 +13,6 @@ BluetoothSerial::~BluetoothSerial()
 
 bool BluetoothSerial::initBluetooth()
 {
-	if(!initWiringPi())
-		return false;
 	// 시리얼 통신을 연다.
 	m_bluetoothFD = serialOpen("/dev/ttyAMA0", 9600);
 	if(m_bluetoothFD == -1)
@@ -45,6 +43,7 @@ int BluetoothSerial::recvData(char* data, int size)
 			if(serialDataAvail(m_bluetoothFD))
 			{
 				lenBuf[i] = serialGetchar(m_bluetoothFD);
+				
 				break;
 			}
 		}
@@ -92,7 +91,7 @@ int BluetoothSerial::sendData(char* data, int size)
 	int sendLen;
 	for(sendLen = 0;sendLen < size;sendLen++)
 	{
-		serialPutchar(m_bluetoothFD, sendLen[i]);
+		serialPutchar(m_bluetoothFD, data[sendLen]);
 	}
 
 	return sendLen;

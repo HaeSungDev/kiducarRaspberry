@@ -13,12 +13,9 @@ private:
 	// 코드를 읽어올 메모리 블록
 	MemoryBlock* m_memBlockCode;
 
-public:
+	// 프로그램이 중지 상태인지 체크하는 변수
+	bool m_isStop;
 
-	// 생성자, 코드를 읽을 메모리 블럭을 외부로부터 받아옴
-	KiducarCode(MemoryBlock* memBlockCode);
-	// 소멸자
-	~KiducarCode(){}
 
 	// 차 제어에 필요한 초기화 코드
 	bool initKiducar();
@@ -52,6 +49,19 @@ public:
 	bool skipCode(int codeNum);
 	// 조건 블럭을 확인하여 분기하는 블록.
 	bool conditionCode(int okCodeNum, int noCodeNum);
+
+public:
+
+	// 생성자, 코드를 읽을 메모리 블럭을 외부로부터 받아옴
+	KiducarCode();
+	// 소멸자
+	~KiducarCode(){}
+
+	void setMemBlockCode(MemoryBlock* memBlockCode);
+	MemoryBlock* getMemBlockCode();
+
+	void setIsStop(bool isStop);
+	bool getIsStop();
 
 	// 코드를 실행
 	void run();

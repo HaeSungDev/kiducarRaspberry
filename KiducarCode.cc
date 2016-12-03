@@ -1,15 +1,13 @@
 #include "KiducarCode.h"
 
-KiducarCode::KiducarCode(MemoryBlock* memBlockCode)
+KiducarCode::KiducarCode()
 {
-	m_memBlockCode = memBlockCode;
+	m_memBlockCode = nullptr;
+	m_isStop = false;
 }
 
 bool KiducarCode::initKiducar()
 {
-	if(!initWiringPi())
-		return false;
-
 	// 왼쪽 바퀴와 오른쪽 바퀴를 OUTPUT 모드로 설정
 	pinMode(LEFT_TIRE_PWM, OUTPUT);
 	pinMode(LEFT_TIRE_DIR, OUTPUT);
@@ -24,6 +22,10 @@ bool KiducarCode::initKiducar()
 
 bool KiducarCode::interpretAndExecute(int* blockCode)
 {
+	// 프로그램이 중지상태가 되었다면 false 반환으로 실행을 중지시킴
+	if(m_isStop)
+		return false;
+
 	int blockType = blockCode[1];
 	
 	switch(blockType)
@@ -236,6 +238,9 @@ bool KiducarCode::conditionCheck(int* blockCode)
 
 bool KiducarCode::interpretAndIgnore(int* blockCode)
 {
+	// 프로그램이 중지상태가 되었다면 false 반환으로 실행을 중지시킴
+	if(m_isStop)
+		return false;
 	int blockType = blockCode[1];
 
 	// 블록을 실행 안하고 무시한다.
@@ -329,8 +334,29 @@ bool KiducarCode::conditionCode(int okCodeNum, int noCodeNum)
 	return true;
 }
 
+void KiducarCode::setMemBlockCode(MemoryBlock* memBlockCode)
+{
+	m_memBlockCode = memBlockCode;
+}
+MemoryBlock* KiducarCode::getMemBlockCode()
+{
+	return m_memBlockCode;
+}
+
+void KiducarCode::setIsStop(bool isStop)
+{
+	m_isStop = isStop;
+}
+bool KiducarCode::getIsStop()
+{
+	return m_isStop;
+}
+
 void KiducarCode::run()
 {
+	if(m_memBlockCode == nullptr)
+		return;
+
 	// 프로그램 시작
 	std::cout << "Program Start!!!" << std::endl;
 

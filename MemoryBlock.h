@@ -36,6 +36,9 @@ public:
 	// 블럭을 삽입함, 삽입시 블럭의 크기를 명시해 주기 위해 배열의 맨 앞에 배열 크기를 넣어줌.
 	bool insertBlock(int* block, int size);
 
+	// 들어있는 블럭을 모두 제거함
+	void deleteAllBlock();
+
 	// 현재 실행중인 배열을 가져옴
 	int* curExecuteBlock();
 

@@ -34,21 +34,17 @@ const int STARTCODE = 100;
 const int ENDCODE = 101;
 // 중지 코드 정의
 const int STOPCODE = 102;
+// 종료 코드 정의
+const int EXITCODE = 103;
 
 
 // wiringPI 초기화 전역 함수
 static bool initWiringPi()
 {
-	static bool isSetup = false;
-
-	if(!isSetup)
+	if(wiringPiSetup() == -1)
 	{
-		if(wiringPiSetup() == -1)
-		{
-			std::cerr << "wiringPiSetup() failed";
-			return false;
-		}
-		isSetup = true;
+		std::cerr << "wiringPiSetup() failed";
+		return false;
 	}
 
 	return true;

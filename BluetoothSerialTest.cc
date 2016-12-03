@@ -10,9 +10,9 @@ int main()
 	while(1)
 	{
 		int len = bs.recvData(buf, 256);
-		buf[len] = '\0';
-
-		printf("%s\n",buf);
+		printf("%d\n", len);
+		for(int i = 0;i < len;i+=4)
+			printf("%d\n", *(int*)(buf+i));
 	}
 
 	return 0;
