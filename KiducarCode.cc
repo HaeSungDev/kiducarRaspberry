@@ -18,6 +18,9 @@ bool KiducarCode::initKiducar()
 	// ECHO_PIN을 INPUT모드, TRIG_PIN을 OUTPUT모드로 설정
 	pinMode(ECHO_PIN, INPUT);
 	pinMode(TRIG_PIN, OUTPUT);
+
+	// 거리 초기화를 위해 사용
+	getDistance();
 }
 
 bool KiducarCode::interpretAndExecute(int* blockCode)
