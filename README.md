@@ -9,17 +9,17 @@
 ## 설치 방법
 
 * 자동차를 제작합니다.<br>
-  - 라즈베리파이3 model B
-  - HC-SR04 초음파 센서 모듈 (echo_pin : 38번 trig_pin :40번)
-  - HC-06 블루투스 모듈 (rx : 8번 tx : 10번)
-  - 2x DC motor
-  - l298n 모터 제어 보드 (PWMA : 11번 DIRA : 12번 PWMB : 13번 DIRB : 15번)
-  - 4xAA 배터리
-  - 라즈베리파이 전원 배터리
+  - 라즈베리파이3 model B <br>
+  - HC-SR04 초음파 센서 모듈 (echo_pin : 38번 trig_pin :40번) <br>
+  - HC-06 블루투스 모듈 (rx : 8번 tx : 10번) <br>
+  - 2x DC motor <br>
+  - l298n 모터 제어 보드 (PWMA : 11번 DIRA : 12번 PWMB : 13번 DIRB : 15번) <br>
+  - 4xAA 배터리 <br>
+  - 라즈베리파이 전원 배터리 <br>
 
-* 라즈베리파이에 Raspbian Jessie with Pixel OS를 설치합니다.
-[이미지 파일 다운로드](https://www.raspberrypi.org/downloads/raspbian/)
-[이미지 인스톨 방법](https://www.raspberrypi.org/documentation/installation/installing-images/README.md)
+* 라즈베리파이에 Raspbian Jessie with Pixel OS를 설치합니다. <br>
+[이미지 파일 다운로드](https://www.raspberrypi.org/downloads/raspbian/) <br>
+[이미지 인스톨 방법](https://www.raspberrypi.org/documentation/installation/installing-images/README.md) <br>
 
 * git clone 명령어를 이용해 저장소를 복사합니다. <br>
 ```bash
